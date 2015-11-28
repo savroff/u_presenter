@@ -2,7 +2,7 @@ module UPresenter
   class Base < SimpleDelegator
     attr_reader :object, :view_context
 
-    def initialize(object, view_context)
+    def initialize(object, view_context = nil)
       @object = object
       @view_context = view_context
       super(@object)

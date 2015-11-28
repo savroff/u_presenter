@@ -6,9 +6,11 @@ module UPresenter
       @collection = collection
       @presenter_class = presenter_class
       @view_context = view_context
-
-      assign_presented
       super(@collection)
+    end
+
+    def presented
+      @presented ||= present_collection
     end
 
     class << self
@@ -18,13 +20,9 @@ module UPresenter
     private
 
     def present_collection
-      @present_collection ||= @collection.map do |object|
+      @collection.map do |object|
         @presenter_class.present(object, @view_context)
       end
-    end
-
-    def assign_presented
-      @collection.class.send(:define_method, "presented") { present_collection }
     end
   end
 end

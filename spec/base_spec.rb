@@ -1,4 +1,3 @@
-require 'pry'
 require "spec_helper"
 require_relative "fixtures/base"
 
@@ -28,16 +27,12 @@ describe UPresenter::Base do
   end
 
   describe "#present_collection" do
-    subject { SamplePresenter.present_collection(objects, view_context)}
+    subject { SamplePresenter.present_collection(objects, view_context) }
     let(:view_context) { ViewContext.new }
     let(:objects) { [object, object] }
 
     it "return collection object" do
       expect(subject).to be_instance_of(UPresenter::CollectionBase)
-    end
-
-    it "have instances of subject presenter inside" do
-      except(subject.presented.first).to be_instance_of(SamplePresenter)
     end
   end
 end
