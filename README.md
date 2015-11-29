@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/savroff/u_presenter.svg)](https://travis-ci.org/savroff/u_presenter)
+[![Code Climate](https://codeclimate.com/github/savroff/u_presenter/badges/gpa.svg)](https://codeclimate.com/github/savroff/u_presenter)
+
 # UPresenter
 
 Simple Presenter for your Rails App.
