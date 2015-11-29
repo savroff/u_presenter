@@ -5,7 +5,7 @@ Simple Presenter for your Rails App.
 ## Why not use other gems?
 
 All gems is good, but we just need to have a simple presenter layer without a lot of magic.
-UPresenter - solve all our problem.
+UPresenter - solved our problem.
 
 ## Installation
 
