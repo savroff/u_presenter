@@ -1,8 +1,11 @@
 # UPresenter
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/u_presenter`. To experiment with that code, run `bin/console` for an interactive prompt.
+Simple Presenter for your Rails App.
 
-TODO: Delete this and the text above, and describe your gem
+## Why not use other gems?
+
+All gems is good, but we just need to have a simple presenter layer without a lot of magic.
+UPresenter - solve all our problem.
 
 ## Installation
 
@@ -22,13 +25,56 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Let's create your first presenter for Article model.
 
-## Development
+  $ mkdir app/presenters/article_presenter.rb
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+And put this in your class:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+class ArticlePresenter < UPresenter::Base
+  def id_humanize
+    "Article id: #{object.id}"
+  end
+end
+```
+
+Now let's use this presenter:
+
+```ruby
+@article = ArticlePresenter.present(Article.last)
+
+@article.id_humanize # your presenter method works fine
+@article.created_at # and method from Model also works fine
+```
+
+## What about collection?
+
+To present collection you can do this:
+
+```ruby
+@articles = ArticlePresenter.present_collection(current_user.articles)
+@articles.presented.first.id_humanize # just use presented collection to show record
+```
+
+Why we use different method in this case? Just for simplicity. Because now, if you use Kaminari
+pagination you can easy get access to all methods, without extra delegation setup:
+
+```ruby
+@articles.presented.each do |article|
+  @article.id_humanize
+end
+
+@article.current_page
+```
+
+## Helpers in Presenter
+
+To use helper methods inside Presenter you just need to add `view_context`:
+
+```ruby
+  @article = ArticlePresenter.present_collection(article, view_context)
+```
 
 ## Contributing
 
