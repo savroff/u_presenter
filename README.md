@@ -65,10 +65,10 @@ pagination you can easy get access to all methods, without extra delegation setu
 
 ```ruby
 @articles.presented.each do |article|
-  @article.id_humanize
+  article.id_humanize
 end
 
-@article.current_page
+@articles.current_page
 ```
 
 ## Helpers in Presenter
