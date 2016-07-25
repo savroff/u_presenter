@@ -10,7 +10,7 @@ class SampleObject
     "#{a} #{b}"
   end
 
-  def lenght
+  def length
     nil
   end
 end
@@ -22,7 +22,7 @@ class ViewContext
 end
 
 class SamplePresenter < UPresenter::Base
-  def lenght
+  def length
     object.a.size + object.b.size
   end
 
