@@ -34,5 +34,10 @@ describe UPresenter::Base do
     it "return collection object" do
       expect(subject).to be_instance_of(UPresenter::CollectionBase)
     end
+
+    it "allows to skip view context in parameters" do
+      expect(SamplePresenter.present_collection(objects))
+        .to be_a UPresenter::CollectionBase
+    end
   end
 end
