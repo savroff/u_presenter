@@ -10,11 +10,11 @@ describe UPresenter::CollectionBase do
     subject { SamplePresenter.present_collection(objects, view_context) }
 
     it "return presented records" do
-      expect(subject.presented.first).to be_instance_of(SamplePresenter)
+      expect(subject.presented).to all(be_a(SamplePresenter))
     end
 
     it "have access to original objects" do
-      expect(subject.first).to be_instance_of(SampleObject)
+      is_expected.to all(be_a(SampleObject))
     end
   end
 end

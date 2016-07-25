@@ -20,7 +20,7 @@ module UPresenter
     private
 
     def present_collection
-      @collection.map do |object|
+      @collection.lazy.map do |object|
         @presenter_class.present(object, @view_context)
       end
     end
