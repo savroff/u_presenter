@@ -11,7 +11,7 @@ module UPresenter
     class << self
       alias_method :present, :new
 
-      def present_collection(collection, view_context)
+      def present_collection(collection, view_context = nil)
         CollectionBase.present(collection, self, view_context)
       end
     end
