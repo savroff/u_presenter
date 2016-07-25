@@ -13,7 +13,7 @@ describe UPresenter::Base do
     end
 
     it "override object method with presenter method" do
-      expect(subject.lenght).to eq(object.a.size + object.b.size)
+      expect(subject.length).to eq(object.a.size + object.b.size)
     end
 
     it "add presenter method to object" do
